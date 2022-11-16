@@ -1,23 +1,28 @@
-import './App.css';
-import logo from './logo.svg';
+import { Navigate, Route, Routes } from 'react-router-dom';
+import ExternalLink from './components/ExternalLink';
+import Footer from './components/Footer';
+import Navigation from './components/Navigation';
+import ChatApp from './pages/ChatApp';
+import Home from './pages/Home';
+import Projects from './pages/Projects';
+import TicTacToe from './pages/TicTacToe';
+import Wc3Risk from './pages/Wc3Risk';
 
 function App() {
 	return (
 		<div className='App'>
-			<header className='App-header'>
-				<img src={logo} className='App-logo' alt='logo' />
-				<p>
-					Edit <code>src/App.tsx</code> and save to reload.
-				</p>
-				<a
-					className='App-link'
-					href='https://reactjs.org'
-					target='_blank'
-					rel='noopener noreferrer'
-				>
-					Learn React
-				</a>
-			</header>
+			<Routes>
+				<Route path='/' element={<Navigation />}>
+					<Route path='/' element={<Navigate to='home' />} />
+					<Route path='/home' element={<Home />} />
+					<Route path='/projects' element={<Projects />} />
+					<Route path='/chatapp' element={<ChatApp />} />
+					<Route path='/tictactoe' element={<TicTacToe />} />
+					<Route path='/wc3risk' element={<Wc3Risk />} />
+					<Route path='/github' element={<ExternalLink />} />
+				</Route>
+			</Routes>
+			<Footer />
 		</div>
 	);
 }
